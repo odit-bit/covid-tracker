@@ -17,11 +17,11 @@ import (
 
 func main() {
 	//server config
-	port := os.Getenv("port")
+	// port := os.Getenv("port")
 
-	if port == "" {
-		log.Fatal("$PORT must be set")
-	}
+	// if port == "" {
+	// 	log.Fatal("$PORT must be set")
+	// }
 
 	//repo config
 	mongoURL := os.Getenv("db_url") //"mongodb://localhost:27017"
@@ -66,7 +66,7 @@ func main() {
 		return c.SendString(string(c.Request().Header.Header()))
 	})
 
-	err := app.Listen(":" + port)
+	err := app.Listen(":8080")
 	if err != nil {
 		log.Fatal("SERVER FAIL")
 	}
