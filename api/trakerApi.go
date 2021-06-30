@@ -1,6 +1,8 @@
 package api
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/odit-bit/covid-tracker/service"
 )
@@ -14,7 +16,10 @@ type TrackerHandlers struct {
 // }
 
 func (th *TrackerHandlers) GetCovidData() func(c *fiber.Ctx) error {
-	data, _ := th.service.FindData()
+	data, err := th.service.FindData()
+	if err != nil {
+		log.Fatal(err)
+	}
 	r := func(c *fiber.Ctx) error {
 		return c.JSON(data)
 	}
