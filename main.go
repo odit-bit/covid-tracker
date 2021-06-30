@@ -29,7 +29,7 @@ func main() {
 		log.Fatal("$db_Url must be set")
 	}
 	mongoDataBase := "covid"
-	mongoTimeout := 1
+	mongoTimeout := 2
 
 	//repository instance
 	repository, _ := repository.NewMongoRepo(mongoURL, mongoDataBase, mongoTimeout)
